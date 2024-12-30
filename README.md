@@ -1,6 +1,6 @@
 # Epic-HB-RedeemCodes-AutoScript
 
-![gif图占位符](路径/到/你的/gif图.gif)
+![gif图占位符](https://github.com/SnowLifeCrescent/Epic-HB-Redeemcodes-AutoScript/blob/main/%E5%85%91%E6%8D%A2.gif?raw=true)
 
 ## 仓库说明
 该库由两部分JavaScript代码构成：
@@ -58,5 +58,5 @@ redeemCodes(codes);
    - 在当前兑换码输入完成后，请手动按下一次 `空格键`（此为手动使能兑换按钮，否则按钮将不会亮起，无法兑换）
    - 按下 `空格` 后，此时脚本应自动兑换并尝试输入下一个兑换码；
    - 如果存在某一资产已经拥有、某一代码已经使用等情况（兑换按钮不亮），请按下一次 `回车键` 以对当前兑换码进行跳过；
-   - ![截图占位符](路径/到/你的/截图3.png)
+   - ![截图占位符](https://github.com/SnowLifeCrescent/Epic-HB-Redeemcodes-AutoScript/blob/main/%E8%B7%B3%E8%BF%87.gif?raw=true)
    - 如果存在网络中断、浏览器闪退等意外情况，导致脚本兑换过程中断，请重新运行脚本。其中，对已使用的兑换码请按照上条中内容所述处理。
