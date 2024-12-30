@@ -1,17 +1,20 @@
 # Epic-HB-RedeemCodes-AutoScript
 
-![gif图占位符](https://github.com/SnowLifeCrescent/Epic-HB-Redeemcodes-AutoScript/blob/main/%E5%85%91%E6%8D%A2.gif?raw=true)
+![兑换](https://github.com/user-attachments/assets/008abea9-c011-4dee-8abf-4ef2f24e5ba2)
+
 
 ## 仓库说明
 该库由两部分JavaScript代码构成：
 
 1. 在 HumbleBundle 的购买后页面使用的脚本，文件为 `HB-RedeemCodes.txt`，用于批量获取兑换码。
 
-   ![截图占位符](路径/到/你的/截图1.png)
+   ![image](https://github.com/user-attachments/assets/04dda569-0ea3-4ab8-a492-e26023076665)
+
 
 2. 在 Epic 商城的兑换码使用页面使用的脚本，文件为 `Epic-RedeemCodes.txt`，用于批量使用兑换码。
 
-   ![截图占位符](路径/到/你的/截图2.png)
+   ![image](https://github.com/user-attachments/assets/cc8a8095-4a43-4b94-8a8c-91387eb0734d)
+
 
 3. HB 的脚本与 Epic 商城的脚本是互相独立的。想要在 Epic 商城批量使用非从 HB 获得的兑换码理论上完全可行。
 
@@ -55,8 +58,9 @@ redeemCodes(codes);
    执行过程中有如下要点：
 
    - 在脚本输入当前兑换码时请不要按动任何按键；
-   - 在当前兑换码输入完成后，请手动按下一次 `空格键`（此为手动使能兑换按钮，否则按钮将不会亮起，无法兑换）
+   - 在当前兑换码输入完成后，请手动按下一次 `空格键`（此为手动使能兑换按钮，否则按钮将不会亮起，无法兑换）。
    - 按下 `空格` 后，此时脚本应自动兑换并尝试输入下一个兑换码；
    - 如果存在某一资产已经拥有、某一代码已经使用等情况（兑换按钮不亮），请按下一次 `回车键` 以对当前兑换码进行跳过；
-   - ![截图占位符](https://github.com/SnowLifeCrescent/Epic-HB-Redeemcodes-AutoScript/blob/main/%E8%B7%B3%E8%BF%87.gif?raw=true)
+     ![跳过](https://github.com/user-attachments/assets/9ee4621d-4473-40ca-aeda-6c9b95795875)
+
    - 如果存在网络中断、浏览器闪退等意外情况，导致脚本兑换过程中断，请重新运行脚本。其中，对已使用的兑换码请按照上条中内容所述处理。
