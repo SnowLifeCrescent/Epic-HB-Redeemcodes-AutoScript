@@ -1,0 +1,100 @@
+// 延迟
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// 模拟键盘
+async function simulateKeyboardInput(inputField, text) {
+    inputField.focus();
+    inputField.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+    for (let i = 0; i < text.length; i++) {
+        inputField.value = text.slice(0, i + 1);
+        inputField.dispatchEvent(new Event('input', { bubbles: true }));
+        await delay(30);
+    }
+    inputField.dispatchEvent(new Event('change', { bubbles: true }));
+}
+
+// 检查兑换按钮
+function isRedeemButtonEnabled(submitButton) {
+    return submitButton.disabled === false && getComputedStyle(submitButton).opacity === '1';
+}
+
+// 监听回车
+function listenForEnterKey(callback) {
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            callback();
+        }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return handleKeyDown; // 返回事件处理函数的引用，以便移除监听
+}
+
+// 移除监听
+function removeEnterKeyListener(handleKeyDown) {
+    document.removeEventListener('keydown', handleKeyDown);
+}
+
+// 兑换
+async function redeemCodes(codes, currentIndex = 0) {
+    if (currentIndex >= codes.length) {
+        console.log('所有兑换代码已尝试完成。');
+        return;
+    }
+
+    const code = codes[currentIndex];
+    console.log(`尝试兑换第 ${currentIndex + 1} 个代码: ${code}`);
+    
+    const inputField = document.querySelector('input[name="code"]');
+    if (!inputField) {
+        console.error('未找到兑换代码输入框，请检查页面。');
+        return;
+    }
+
+    inputField.value = '';
+    inputField.dispatchEvent(new Event('input', { bubbles: true }));
+    await delay(1000);
+    await simulateKeyboardInput(inputField, code);
+    await delay(1000);
+
+    const submitButton = document.querySelector('button[type="submit"]');
+    if (!submitButton) {
+        console.error('未找到提交按钮，请检查页面。');
+        return;
+    }
+
+    const handleKeyDown = listenForEnterKey(() => {
+        console.log(`回车键被按下，跳过当前兑换码`);
+        inputField.value = ''; // 清空输入框
+        removeEnterKeyListener(handleKeyDown); // 移除监听
+        redeemCodes(codes, currentIndex + 1); // 继续下一个兑换码
+    });
+
+    while (!isRedeemButtonEnabled(submitButton)) {
+        console.log('正在等待兑换按钮可用...  请在文本框中键入一次空格，或按下回车键跳过当前兑换码。');
+        await delay(500);
+    }
+
+    submitButton.click();
+    console.log(`提交兑换代码: ${code}`);
+    await delay(1000);
+
+    const otherCodesLink = document.querySelector('.css-8z9ay2');
+    if (otherCodesLink) {
+        otherCodesLink.click();
+        console.log('点击“兑换另一个兑换码”链接');
+        await delay(1000);
+    }
+
+    removeEnterKeyListener(handleKeyDown); // 确保移除
+    redeemCodes(codes, currentIndex + 1);
+}
+
+const codes = [
+    // 'THISI-SASIM-PLEEX-AMPLE'
+    // ... 其他代码
+];
+
+redeemCodes(codes);

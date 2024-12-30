@@ -1,0 +1,4 @@
+// 提取所有兑换码
+const codes = [...document.querySelectorAll('.keyfield-value')].map(div => div.textContent.trim());
+
+console.log('提取的兑换码:', codes);
