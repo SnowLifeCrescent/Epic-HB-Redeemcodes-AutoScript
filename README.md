@@ -4,7 +4,6 @@
 
 
 - [English README](README.en.md)
-- [中文说明](README.zh.md)
 
 
 ## 仓库说明
